@@ -10,7 +10,7 @@
             <div class="col-4">
                 <form action="{{url('dashboard/users')}}" method="GET">
                     <div class="input-group">
-                        <input type="text" class="form-control" name="q">
+                        <input type="text" class="form-control" name="q" value="{{$request['q'] ?? ''}}">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-secondary btn-sm">Search</button>
                         </div>
@@ -28,6 +28,7 @@
                     <th>Email</th>
                     <th>Registered</th>
                     <th>Edited</th>
+                    <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,11 +39,12 @@
                     <td>{{$user->email}}</td>
                     <td>{{$user->created_at}}</td>
                     <td>{{$user->updated_at}}</td>
+                    <td><a href="{{url('dashboard/user/edit/'.$user->id)}}" class="btn btn-success btn-sm">Edit</a></td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
-        {{$users->links()}}
+        {{$users->appends($request)->links()}}
     </div>
 </div>
 @endsection

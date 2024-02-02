@@ -22,8 +22,9 @@ class UserController extends Controller
                                 ->orwhere('email','like','%'.$q.'%');
                 })
                 ->paginate(10); //menampilkan data user 10 perhalaman
-        //dd($users);
-        return view('dashboard/user/list',['users' => $users,'active' => $active]);
+        $request = $request->all();
+        // dd($request);
+        return view('dashboard/user/list',['users' => $users,'request' => $request,'active' => $active]);
     }
 
     /**
@@ -67,6 +68,7 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        dd($id);
     }
 
     /**
