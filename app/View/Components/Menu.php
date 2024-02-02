@@ -46,8 +46,12 @@ class Menu extends Component
                 'label' => 'Tickets'
             ],
             [
-                'label' => 'User'
+                'label' => 'Users'
             ]
         ];
+    }
+
+    public function isActive($label){
+        return $label === $this->active;
     }
 }
