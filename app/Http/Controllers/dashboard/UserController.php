@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+    // public function __construct()
+    // {
+    //     $this->middleware('auth'); //akan melakukan pengecekan apakah user sudah login atau belum
+    // }
+    
     /**
      * Display a listing of the resource.
      *
