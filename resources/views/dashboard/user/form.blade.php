@@ -17,7 +17,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <form action="{{url('dashboard/user/update/'.$user->id)}}" method="post">
+                <form action="{{route('dashboard.users.update',['id' => $user->id])}}" method="post">
                     @csrf
                     @method('put')
                     <div class="form-group">
@@ -41,7 +41,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+    </div>
     </div>
 </div>
 
@@ -56,7 +56,7 @@
                 <p>Apakah anda yakin ingin menghapus akun dengan nama : {{$user->name}}</p>
             </div>
             <div class="modal-footer">
-                <form action="{{url('dashboard/user/delete/'.$user->id)}}" method="post">
+                <form action="{{route('dashboard.users.delete',['id' => $user->id])}}" method="post">
                     @csrf
                     @method('delete')
                     <button class="btn btn-sm btn-danger">
