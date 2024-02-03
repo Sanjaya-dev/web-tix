@@ -50,6 +50,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5>Delete</h5>
+                <button type="button" class="close" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="modal-body">
                 <p>Apakah anda yakin ingin menghapus akun dengan nama : {{$user->name}}</p>
