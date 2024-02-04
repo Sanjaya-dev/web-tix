@@ -24,7 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware('auth')->group(function(){
     // dashboard
     Route::get('/dashboard', 'Dashboard\DashboardController@index')->name('dashboard');
-
+    
+    // movies
     Route::get('/dashboard/movies', 'Dashboard\MovieController@index')->name('dashboard.movies');
     
     Route::get('/dashboard/theaters', 'Dashboard\TheaterController@index')->name('dashboard.theaters');

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Movie;
 
 class MovieController extends Controller
 {
@@ -11,9 +13,17 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request,Movie $movies)
     {
-        //
+        $q = $request->input('q');
+        $active = 'Movies';
+        $movies = $movies->when($q,function($query) use ($q) {
+                    return $query->where('title','like','%'.$q.'%');
+                })
+                ->paginate(10); //menampilkan data user 10 perhalaman
+        $request = $request->all();
+        // dd($request);
+        return view('dashboard/movie/list',['movies' => $movies,'request' => $request,'active' => $active]);
     }
 
     /**
