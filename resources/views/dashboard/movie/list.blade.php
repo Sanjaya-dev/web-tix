@@ -39,9 +39,11 @@
                     <td class="col-thumbnail">
                         <img src="{{asset('storage/movies/'.$movie->thumbnail)}}" class="img-fluid">
                     </td>
-                    <td>{{$movie->title}}</td>
                     <td>
-                        <a href="{{route('dashboard.movies.edit',['id' => $movie->id])}}" title="Edit"
+                        <h4>{{$movie->title}}</h4>
+                    </td>
+                    <td>
+                        <a href="{{route('dashboard.movies.edit',$movie->id)}}" title="Edit"
                             class="btn btn-success btn-sm">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>

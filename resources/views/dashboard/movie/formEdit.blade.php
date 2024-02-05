@@ -5,7 +5,7 @@
     <div class="card-header">
         <div class="row">
             <div class="col-8 align-self-center">
-                <h3>Movie</h3>
+                <h3>Edit Movie</h3>
             </div>
             <div class="col-4 text-right">
                 <button class="btn btn-sm text-secondary" data-toggle="modal" data-target='#deleteModal'>
@@ -17,29 +17,25 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <form action="{{route($url,$movie->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('dashboard.movies.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('put')
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" name="title" class="form-control @error('title'){{'is-invalid'}}@enderror" 
-                        value="{{old('title') ?? $movie->title}}">
+                        <input type="text" name="title" class="form-control" value="{{$movie->title}}">
                         @error('title')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea name="description"
-                            class="form-control @error('description'){{'is-invalid'}}@enderror">{{old('description') ?? $movie->description}}</textarea>
+                        <textarea name="description" class="form-control">{{$movie->description}}</textarea>
                         @error('description')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="thumbnail">Thumbnail</label>
-                        <input type="file" name="thumbnail" class="form-control custome-file-input"
-                            value="{{old('thumbnail')}}">
+                        <input type="file" name="thumbnail" class="form-control custome-file-input" value="">
                         @error('thumbnail')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
@@ -47,7 +43,7 @@
                     <div class="form-group mb-0">
                         <button type="button" class="btn btn-sm btn-secondary"
                             onclick="window.history.back()">Cancel</button>
-                        <button type="submit" class="btn btn-success btn-sm">{{$button}}</button>
+                        <button type="submit" class="btn btn-success btn-sm">Create</button>
                     </div>
                 </form>
             </div>
