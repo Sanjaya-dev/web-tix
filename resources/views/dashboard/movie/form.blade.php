@@ -55,7 +55,7 @@
     </div>
 </div>
 
-{{-- <div class="modal fade" id="deleteModal">
+<div class="modal fade" id="deleteModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -63,10 +63,10 @@
                 <button type="button" class="close" data-dismiss="modal"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="modal-body">
-                <p>Apakah anda yakin ingin menghapus akun dengan nama : {{$movie->name}}</p>
+                <p>Apakah anda yakin ingin menghapus movie: {{$movie->title}}</p>
             </div>
             <div class="modal-footer">
-                <form action="{{route('dashboard.users.delete',['id' => $movie->id])}}" method="post">
+                <form action="{{route('dashboard.movies.delete',$movie->id)}}" method="post">
                     @csrf
                     @method('delete')
                     <button class="btn btn-sm btn-danger">
@@ -76,6 +76,6 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 
 @endsection
