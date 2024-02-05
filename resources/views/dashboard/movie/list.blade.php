@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mb-2">
-    <a href="{{route('dashboard.movies.create')}}" class="btn btn-primary">+ Movie</a>
+    <a href="{{route('dashboard.movies.create')}}" class="btn btn-primary btn-sm">+ Movie</a>
 </div>
 <div class="card">
     <div class="card-header">
@@ -28,18 +28,18 @@
         <table class="table table-borderless table-striped table-hover">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Title</th>
                     <th>Thumbnail</th>
+                    <th>Title</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($movies as $movie )
                 <tr>
-                    <th scope="row">{{($movies->currentPage() - 1) * $movies->perPage() + $loop->iteration}}</th>
+                    <td class="col-thumbnail">
+                        <img src="{{asset('storage/movies/'.$movie->thumbnail)}}" class="img-fluid">
+                    </td>
                     <td>{{$movie->title}}</td>
-                    <td><img src="{{asset('storage/movies/'.$movie->thumbnail)}}"></td>
                     <td>
                         <a href="{{route('dashboard.movies.edit',['id' => $movie->id])}}" title="Edit"
                             class="btn btn-success btn-sm">
