@@ -22,14 +22,14 @@
                     @method('put')
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" name="name" class="form-control" value="{{old('name') ?? $user->name}}">
+                        <input type="text" name="name" class="form-control @error('name'){{'is-invalid'}}@enderror" value="{{old('name') ?? $user->name}}">
                         @error('name')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" name="email" class="form-control" value="{{old('email') ?? $user->email}}">
+                        <input type="text" name="email" class="form-control @error('email'){{'is-invalid'}}@enderror" value="{{old('email') ?? $user->email}}">
                         @error('email')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
