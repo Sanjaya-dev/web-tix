@@ -63,7 +63,7 @@
         </table>
         {{$movies->appends($request)->links()}}
         @else
-        <h4 class="text-center">Belum ada data movies</h4>
+        <h4 class="text-center py-4">{{__('messages.no_data',['module' => 'movies'])}}</h4>
         @endif
     </div>
 </div>

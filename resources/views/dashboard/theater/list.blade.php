@@ -1,14 +1,26 @@
 @extends('layouts.dashboard')
 
 @section('content')
+<div class="mb-2">
+    <a href="{{route('dashboard.theaters.create')}}" class="btn btn-primary btn-sm">+ Theater</a>
+</div>
+
+@if(session()->has('message'))
+<div class="alert alert-success">
+    <strong>{{session()->get('message')}}</strong>
+    <button class="close" data-dismiss="alert">
+        <span>&times;</span>
+    </button>
+</div>
+@endif
 <div class="card">
     <div class="card-header">
         <div class="row">
             <div class="col-8 align-self-center">
-                <h3>User</h3>
+                <h3>Theater</h3>
             </div>
             <div class="col-4">
-                <form action="{{route('dashboard.users')}}" method="GET">
+                <form action="{{route('dashboard.theaters')}}" method="GET">
                     <div class="input-group">
                         <input type="text" class="form-control form-control-sm" name="q"
                             value="{{$request['q'] ?? ''}}">
@@ -21,28 +33,26 @@
         </div>
     </div>
     <div class="card-body p-0">
-        @if ($users->total())
+        @if ($theaters->total())
         <table class="table table-borderless table-striped table-hover">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Registered</th>
-                    <th>Edited</th>
+                    <th>Theater</th>
+                    <th>Address</th>
                     <th>&nbsp;</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user )
+                @foreach ($theaters as $theater )
                 <tr>
-                    <th scope="row">{{($users->currentPage() - 1) * $users->perPage() + $loop->iteration}}</th>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->created_at}}</td>
-                    <td>{{$user->updated_at}}</td>
                     <td>
-                        <a href="{{route('dashboard.users.edit',['id' => $user->id])}}" title="Edit"
+                        {{$theater->theater}}
+                    </td>
+                    <td>
+                        <h4>{{$theater->address}}</h4>
+                    </td>
+                    <td>
+                        <a href="{{route('dashboard.theaters.edit',$theater->id)}}" title="Edit"
                             class="btn btn-success btn-sm">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
@@ -51,9 +61,9 @@
                 @endforeach
             </tbody>
         </table>
-        {{$users->appends($request)->links()}}
+        {{$theaters->appends($request)->links()}}
         @else
-            <h4 class="text-center py-4">{{__('messages.no_data',['module' => 'users'])}}</h4>
+            <h4 class="text-center py-4">{{__('messages.no_data',['module' => 'theaters'])}}</h4>
         @endif
     </div>
 </div>
