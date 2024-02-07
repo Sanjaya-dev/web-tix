@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
 use App\Models\Theater;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class TheaterController extends Controller
 {
@@ -48,9 +49,28 @@ class TheaterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Theater $theater)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'theater' => 'required',
+            'address' => 'required',
+            'status' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                    ->route('dashboard.theaters.create')
+                    ->withErrors($validator)
+                    ->withInput();
+        } else {
+            $theater->theater = $request->input('theater');
+            $theater->address = $request->input('address');
+            $theater->status = $request->input('status');
+            $theater->save();
+            return redirect()
+                    ->route('dashboard.theaters')
+                    ->with('message',__('messages.store',['title' => $request->input('theater')]));
+        }
     }
 
     /**
