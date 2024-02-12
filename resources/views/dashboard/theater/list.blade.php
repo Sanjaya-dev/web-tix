@@ -56,6 +56,10 @@
                             class="btn btn-success btn-sm">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
+                        <a href="{{route('dashboard.theaters.arrange.movie',$theater->id)}}" title="Arrange Movie"
+                            class="btn btn-primary btn-sm">
+                            <i class="fa-solid fa-film"></i>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
@@ -63,7 +67,7 @@
         </table>
         {{$theaters->appends($request)->links()}}
         @else
-            <h4 class="text-center py-4">{{__('messages.no_data',['module' => 'theaters'])}}</h4>
+        <h4 class="text-center py-4">{{__('messages.no_data',['module' => 'theaters'])}}</h4>
         @endif
     </div>
 </div>
