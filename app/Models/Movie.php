@@ -12,4 +12,8 @@ class Movie extends Model
     protected $fillable = [
         'title', 'thumbnail'
     ];
+
+    public function studios(){
+        return $this->hasMany(Studio::class, 'id', 'movies_id');
+    }
 }

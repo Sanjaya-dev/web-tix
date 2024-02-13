@@ -45,12 +45,12 @@ Route::middleware('auth')->group(function(){
     Route::delete('/dashboard/theaters/{theater}', 'Dashboard\TheaterController@destroy')->name('dashboard.theaters.delete');
 
     // arrange movie
-    Route::get('/dashboard/theaters/arrange/movies/{theater}', 'Dashboard\ArrangeMovieController@index')->name('dashboard.theaters.arrange.movie');
-    Route::get('/dashboard/theaters/arrange/movies/create/{theater}', 'Dashboard\ArrangeMovieController@create')->name('dashboard.theaters.arrange.movie.create');
-    Route::post('/dashboard/theaters/arrange/movies', 'Dashboard\ArrangeMovieController@store')->name('dashboard.theaters.arrange.movie.store');
-    Route::get('/dashboard/theaters/arrange/movies/{arrangeMovie}', 'Dashboard\ArrangeMovieController@edit')->name('dashboard.theaters.arrange.movie.edit');
-    Route::put('/dashboard/theaters/arrange/movies/{arrangeMovie}', 'Dashboard\ArrangeMovieController@update')->name('dashboard.theaters.arrange.movie.update');
-    Route::delete('/dashboard/theaters/arrange/movies/{arrangeMovie}', 'Dashboard\ArrangeMovieController@destroy')->name('dashboard.theaters.arrange.movie.delete');
+    Route::get('/dashboard/theaters/studios/{theater}', 'Dashboard\StudioController@index')->name('dashboard.theaters.studio');
+    Route::get('/dashboard/theaters/studios/create/{theater}', 'Dashboard\StudioController@create')->name('dashboard.theaters.studio.create');
+    Route::post('/dashboard/theaters/studios', 'Dashboard\StudioController@store')->name('dashboard.theaters.studio.store');
+    Route::get('/dashboard/theaters/studios/{theater}/{studio}', 'Dashboard\StudioController@edit')->name('dashboard.theaters.studio.edit');
+    Route::put('/dashboard/theaters/studios/{studio}', 'Dashboard\StudioController@update')->name('dashboard.theaters.studio.update');
+    Route::delete('/dashboard/theaters/studios/{studio}', 'Dashboard\StudioController@destroy')->name('dashboard.theaters.studio.delete');
 
     // users
     Route::get('/dashboard/users', 'Dashboard\UserController@index')->name('dashboard.users');

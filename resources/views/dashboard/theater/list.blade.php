@@ -56,7 +56,7 @@
                             class="btn btn-success btn-sm">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-                        <a href="{{route('dashboard.theaters.arrange.movie',$theater->id)}}" title="Arrange Movie"
+                        <a href="{{route('dashboard.theaters.studio',$theater->id)}}" title="Arrange Movie"
                             class="btn btn-primary btn-sm">
                             <i class="fa-solid fa-film"></i>
                         </a>
