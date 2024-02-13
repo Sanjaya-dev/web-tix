@@ -33,7 +33,7 @@ class StudioController extends Controller
 
         $request = $request->all();
         // dd($arrangeMovies);
-        return view('dashboard/arrange_movie/list',['theater' => $theater,
+        return view('dashboard/studio/list',['theater' => $theater,
                                                     'studios' => $studios,
                                                     'request' => $request,
                                                     'active' => $active]);
@@ -49,7 +49,7 @@ class StudioController extends Controller
         $active = 'Theaters';
         $movies = Movie::get();
 
-        return view('dashboard/arrange_movie/form',['theater' => $theater,
+        return view('dashboard/studio/form',['theater' => $theater,
         'url' => 'dashboard.theaters.studio.store',
         'button' => 'Create',
         'movies' => $movies,
@@ -125,7 +125,7 @@ class StudioController extends Controller
         $active = 'Theaters';
         $movies = Movie::get();
 
-        return view('dashboard/arrange_movie/form',['theater' => $theater,
+        return view('dashboard/studio/form',['theater' => $theater,
         'url' => 'dashboard.theaters.studio.update',
         'studio' => $studio,
         'button' => 'Update',
